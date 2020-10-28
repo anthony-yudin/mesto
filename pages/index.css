@@ -17,11 +17,12 @@
 @import "../blocks/profile/__info/profile__info.css";
 
 @import "../blocks/cards/cards.css";
-@import "../blocks/cards/__item/cards__item.css";
-@import "../blocks/cards/__img/cards__img.css";
-@import "../blocks/cards/__content/cards__content.css";
-@import "../blocks/cards/__title/cards__title.css";
-@import "../blocks/cards/__like/cards__like.css";
+
+@import "../blocks/card/card.css";
+@import "../blocks/card/__img/card__img.css";
+@import "../blocks/card/__content/card__content.css";
+@import "../blocks/card/__title/card__title.css";
+@import "../blocks/card/__like/card__like.css";
 
 @import "../blocks/footer/footer.css";
 

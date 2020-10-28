@@ -11,74 +11,74 @@
 <div class="page">
   <div class="container">
     <header class="header">
-      <img class="header__logo" src="images/logo.svg" alt="Mesto">
+      <img class="header__logo" src="images/logo.svg" alt="Место">
     </header>
 
-    <div class="main">
-      <div class="profile">
+    <main class="main">
+      <section class="profile">
         <div class="profile__info">
-          <img class="profile__img" src="images/avatar.jpg" alt="Жак-Ив Кусто - Исследователь океана">
+          <img class="profile__img" src="images/avatar.jpg" alt="Ваш аватар">
           <div class="profile__content">
             <div class="profile__fio-box">
               <h1 class="profile__fio">Жак-Ив Кусто</h1>
-              <div class="profile__edit"></div>
+              <button type="submit" class="profile__edit"></button>
             </div>
             <p class="profile__profess">Исследователь океана</p>
           </div>
         </div>
-        <div class="profile__add"></div>
-      </div>
+        <button type="submit" class="profile__add"></button>
+      </section>
 
-      <div class="cards">
-        <div class="cards__item">
-          <img class="cards__img" src="images/cards/kirill-pershin-1088404-unsplash.jpg" alt="Карачаевск">
-          <div class="cards__content">
-            <div class="cards__title">Карачаево-черкесия</div>
-            <div class="cards__like"></div>
+      <section class="cards">
+        <article class="card">
+          <img class="card__img" src="images/cards/kirill-pershin-1088404-unsplash.jpg" alt="Карачаевск">
+          <div class="card__content">
+            <h3 class="card__title">Карачаево-черкесия</h3>
+            <button type="submit" class="card__like"></button>
           </div>
-        </div>
+        </article>
 
-        <div class="cards__item">
-          <img class="cards__img" src="images/cards/kirill-pershin-1404681-unsplash.jpg" alt="Гора Эльбрус">
-          <div class="cards__content">
-            <div class="cards__title">Гора Эльбрус</div>
-            <button class="cards__like"></button>
+        <article class="card">
+          <img class="card__img" src="images/cards/kirill-pershin-1404681-unsplash.jpg" alt="Гора Эльбрус">
+          <div class="card__content">
+            <h3 class="card__title">Гора Эльбрус</h3>
+            <button type="submit" class="card__like"></button>
           </div>
-        </div>
+        </article>
 
-        <div class="cards__item">
-          <img class="cards__img" src="images/cards/kirill-pershin-1556355-unsplash.jpg" alt="Домбай">
-          <div class="cards__content">
-            <div class="cards__title">Домбай</div>
-            <button class="cards__like"></button>
+        <article class="card">
+          <img class="card__img" src="images/cards/kirill-pershin-1556355-unsplash.jpg" alt="Домбай">
+          <div class="card__content">
+            <h3 class="card__title">Домбай</h3>
+            <button type="submit" class="card__like"></button>
           </div>
-        </div>
+        </article>
 
-        <div class="cards__item">
-          <img class="cards__img" src="images/cards/kirill-pershin-1404681-unsplash.jpg" alt="Гора Эльбрус">
-          <div class="cards__content">
-            <div class="cards__title">Гора Эльбрус</div>
-            <button class="cards__like"></button>
+        <article class="card">
+          <img class="card__img" src="images/cards/kirill-pershin-1404681-unsplash.jpg" alt="Гора Эльбрус">
+          <div class="card__content">
+            <h3 class="card__title">Гора Эльбрус</h3>
+            <button type="submit" class="card__like"></button>
           </div>
-        </div>
+        </article>
 
-        <div class="cards__item">
-          <img class="cards__img" src="images/cards/kirill-pershin-1556355-unsplash.jpg" alt="Домбай">
-          <div class="cards__content">
-            <div class="cards__title">Домбай</div>
-            <button class="cards__like"></button>
+        <article class="card">
+          <img class="card__img" src="images/cards/kirill-pershin-1556355-unsplash.jpg" alt="Домбай">
+          <div class="card__content">
+            <h3 class="card__title">Домбай</h3>
+            <button type="submit" class="card__like"></button>
           </div>
-        </div>
+        </article>
 
-        <div class="cards__item">
-          <img class="cards__img" src="images/cards/kirill-pershin-1088404-unsplash.jpg" alt="Карачаевск">
-          <div class="cards__content">
-            <div class="cards__title">Карачаево-черкесия</div>
-            <div class="cards__like"></div>
+        <article class="card">
+          <img class="card__img" src="images/cards/kirill-pershin-1088404-unsplash.jpg" alt="Карачаевск">
+          <div class="card__content">
+            <h3 class="card__title">Карачаево-черкесия</h3>
+            <button type="submit" class="card__like"></button>
           </div>
-        </div>
-      </div>
-    </div>
+        </article>
+      </section>
+    </main>
 
     <footer class="footer">
       © 2020 Mesto Russia
@@ -87,17 +87,17 @@
 
   <div class="popup">
     <div class="popup__container">
-      <form class="popup__form">
-        <div class="popup__close"></div>
+      <form class="popup__form" method="post" >
+        <button type="submit" class="popup__close"></button>
         <h3 class="popup__title">Редактировать профиль</h3>
-        <input class="popup__input popup__input_fio" type="text" name="fio">
-        <input class="popup__input popup__input_profess" type="text" name="profess">
+        <input class="popup__input popup__input_value_fio" type="text" name="fio">
+        <input class="popup__input popup__input_value_profess" type="text" name="profess">
         <button type="submit" class="popup__btn">Сохранить</button>
       </form>
     </div>
   </div>
 </div>
 
-<script src="js/script.js"></script>
+<script src="scripts/script.js"></script>
 </body>
 </html>

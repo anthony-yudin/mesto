@@ -2,6 +2,11 @@
     font-size: 14px;
     line-height: 17px;
     margin: 0 0 36px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 220px;
+    padding: 0 15px;
 }
 
 @media screen and (min-width: 768px) {
@@ -9,5 +14,12 @@
         font-size: 18px;
         line-height: 22px;
         margin-bottom: 0;
+        max-width: 340px;
+    }
+}
+
+@media screen and (min-width: 991px) {
+    .profile__profess {
+        max-width: 500px;
     }
 }

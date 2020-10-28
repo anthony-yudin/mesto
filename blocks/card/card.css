@@ -1,16 +1,16 @@
-.cards__item {
+.card {
     overflow: hidden;
     border-radius: 10px;
     background-color: #fff;
     margin-bottom: 20px;
 }
 
-.cards__item:last-child {
+.card:last-child {
     margin-bottom: 0;
 }
 
 @media screen and (min-width: 576px) {
-    .cards__item {
+    .card {
         margin-bottom: 0;
     }
 }
