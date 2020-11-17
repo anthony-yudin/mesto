@@ -30,53 +30,7 @@
       </section>
 
       <section class="cards">
-        <article class="card">
-          <img class="card__img" src="images/cards/kirill-pershin-1088404-unsplash.jpg" alt="Карачаевск">
-          <div class="card__content">
-            <h3 class="card__title">Карачаево-черкесия</h3>
-            <button type="button" class="card__like"></button>
-          </div>
-        </article>
 
-        <article class="card">
-          <img class="card__img" src="images/cards/kirill-pershin-1404681-unsplash.jpg" alt="Гора Эльбрус">
-          <div class="card__content">
-            <h3 class="card__title">Гора Эльбрус</h3>
-            <button type="button" class="card__like"></button>
-          </div>
-        </article>
-
-        <article class="card">
-          <img class="card__img" src="images/cards/kirill-pershin-1556355-unsplash.jpg" alt="Домбай">
-          <div class="card__content">
-            <h3 class="card__title">Домбай</h3>
-            <button type="button" class="card__like"></button>
-          </div>
-        </article>
-
-        <article class="card">
-          <img class="card__img" src="images/cards/kirill-pershin-1404681-unsplash.jpg" alt="Гора Эльбрус">
-          <div class="card__content">
-            <h3 class="card__title">Гора Эльбрус</h3>
-            <button type="button" class="card__like"></button>
-          </div>
-        </article>
-
-        <article class="card">
-          <img class="card__img" src="images/cards/kirill-pershin-1556355-unsplash.jpg" alt="Домбай">
-          <div class="card__content">
-            <h3 class="card__title">Домбай</h3>
-            <button type="button" class="card__like"></button>
-          </div>
-        </article>
-
-        <article class="card">
-          <img class="card__img" src="images/cards/kirill-pershin-1088404-unsplash.jpg" alt="Карачаевск">
-          <div class="card__content">
-            <h3 class="card__title">Карачаево-черкесия</h3>
-            <button type="button" class="card__like"></button>
-          </div>
-        </article>
       </section>
     </main>
 
@@ -85,9 +39,9 @@
     </footer>
   </div>
 
-  <div class="popup">
+  <div class="popup" id="popup-edit-profile">
     <div class="popup__container">
-      <form class="popup__form" method="post" >
+      <form class="popup__form" method="post" id="edit-profile">
         <button type="button" class="popup__close"></button>
         <h3 class="popup__title">Редактировать профиль</h3>
         <input class="popup__input popup__input_value_fio" type="text" name="fio">
@@ -96,7 +50,37 @@
       </form>
     </div>
   </div>
+
+  <div class="popup" id="popup-add-cards">
+    <div class="popup__container">
+      <form class="popup__form" method="post" id="add-cards">
+        <button type="button" class="popup__close"></button>
+        <h3 class="popup__title">Новое место</h3>
+        <input class="popup__input popup__input_value_name-cards" type="text" name="name" placeholder="Название">
+        <input class="popup__input popup__input_value_link-cards" type="text" name="link" placeholder="Ссылка на картинку">
+        <button type="submit" class="popup__btn">Создать</button>
+      </form>
+    </div>
+  </div>
 </div>
+
+<template id="template-card">
+  <article class="card">
+    <div class="card__popup">
+      <div class="card__popup-box">
+        <img class="card__popup-img">
+        <p class="card__popup-title"></p>
+        <button type="button" class="card__popup-close"></button>
+      </div>
+    </div>
+    <img class="card__img">
+    <div class="card__content">
+      <h3 class="card__title"></h3>
+      <button type="button" class="card__like"></button>
+    </div>
+    <button type="button" class="card__delete"></button>
+  </article>
+</template>
 
 <script src="scripts/script.js"></script>
 </body>
