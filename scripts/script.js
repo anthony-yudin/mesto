@@ -27,32 +27,32 @@ const initialCards = [
 const cards = document.querySelector('.cards');
 const templateCard = document.querySelector('#template-card').content;
 
-let page = document.querySelector('.page');
-let profileEdit = page.querySelector('.profile__edit');
-let profileAdd = page.querySelector('.profile__add');
-let popup = page.querySelector('.popup');
-let popupEdit = page.querySelector('#popup-edit-profile');
-let popupAdd = page.querySelector('#popup-add-cards');
+const page = document.querySelector('.page');
+const profileEdit = page.querySelector('.profile__edit');
+const profileAdd = page.querySelector('.profile__add');
+const popup = page.querySelector('.popup');
+const popupEdit = page.querySelector('#popup-edit-profile');
+const popupAdd = page.querySelector('#popup-add-cards');
 
-let btnCloses = page.querySelectorAll('.popup__close');
+const btnCloses = page.querySelectorAll('.popup__close');
 
-let nameInput = page.querySelector('.popup__input_value_fio');
-let jobInput = page.querySelector('.popup__input_value_profess');
+const nameInput = page.querySelector('.popup__input_value_fio');
+const jobInput = page.querySelector('.popup__input_value_profess');
 
-let nameInputCards = page.querySelector('.popup__input_value_name-cards');
-let linkInputCards = page.querySelector('.popup__input_value_link-cards');
+const nameInputCards = page.querySelector('.popup__input_value_name-cards');
+const linkInputCards = page.querySelector('.popup__input_value_link-cards');
 
-let profileFio = page.querySelector('.profile__fio');
-let profileProfess = page.querySelector('.profile__profess');
+const profileFio = page.querySelector('.profile__fio');
+const profileProfess = page.querySelector('.profile__profess');
 
-let formElementEdit = page.querySelector('#edit-profile');
-let formElementAdd = page.querySelector('#add-cards');
-let popupOpened = 'popup_opened';
+const formElementEdit = page.querySelector('#edit-profile');
+const formElementAdd = page.querySelector('#add-cards');
+const popupOpened = 'popup_opened';
 
-function addCard(name, link, insert = 'append') {
-    let cardElement = templateCard.cloneNode(true);
-    let cardsImg = cardElement.querySelector('.card__img');
-    let cardsImgPopup = cardElement.querySelector('.card__popup-img');
+function createCard(name, link) {
+    const cardElement = templateCard.cloneNode(true);
+    const cardsImg = cardElement.querySelector('.card__img');
+    const cardsImgPopup = cardElement.querySelector('.card__popup-img');
 
     cardsImg.src = link;
     cardsImg.alt = name;
@@ -65,22 +65,26 @@ function addCard(name, link, insert = 'append') {
     cardElement.querySelector('.card__like').addEventListener('click', (evt) => setLike(evt.target));
     cardElement.querySelector('.card__delete').addEventListener('click', (evt) => removeCards(evt.target));
 
+    return cardElement;
+}
+
+function addCard(container, cardElement, insert = 'append') {
     if (insert === 'append') {
-        cards.append(cardElement);
+        container.append(cardElement);
     } else {
-        cards.prepend(cardElement);
+        container.prepend(cardElement);
     }
 }
 
-function openPopupEdit() {
+function openPopup(popup) {
+    popup.classList.add(popupOpened);
+}
+
+function openPopupEdit(popup) {
     nameInput.value = profileFio.textContent;
     jobInput.value = profileProfess.textContent;
 
-    popupEdit.classList.add(popupOpened);
-}
-
-function openPopupAdd() {
-    popupAdd.classList.add(popupOpened);
+    openPopup(popup);
 }
 
 function closePopup(evt) {
@@ -106,7 +110,7 @@ function editFormSubmit(evt) {
 function addFormSubmit(evt) {
     evt.preventDefault();
 
-    addCard(nameInputCards.value, linkInputCards.value, 'prepend');
+    addCard(cards, createCard(nameInputCards.value, linkInputCards.value), 'prepend');
     evt.target.reset();
     closePopup(evt.target);
 }
@@ -117,11 +121,11 @@ function changePopupImage(evt) {
 }
 
 initialCards.forEach((item) => {
-    addCard(item.name, item.link);
+    addCard(cards, createCard(item.name, item.link));
 });
 
-profileEdit.addEventListener('click', openPopupEdit);
-profileAdd.addEventListener('click', openPopupAdd);
+profileEdit.addEventListener('click', () => openPopupEdit(popupEdit));
+profileAdd.addEventListener('click', () => openPopup(popupAdd));
 
 formElementEdit.addEventListener('submit', editFormSubmit);
 formElementAdd.addEventListener('submit', addFormSubmit);
