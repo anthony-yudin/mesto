@@ -60,8 +60,9 @@ function createCard(name, link) {
 
     cardElement.querySelector('.card__title').textContent = name;
     cardElement.querySelector('.card__popup-title').textContent = name;
-    cardsImg.addEventListener('click', (evt) => changePopupImage(evt.target));
-    cardElement.querySelector('.card__popup-close').addEventListener('click', (evt) => changePopupImage(evt.target));
+
+    cardsImg.addEventListener('click', (evt) => openPopup(evt.target.closest('.card').querySelector('.popup')));
+
     cardElement.querySelector('.card__like').addEventListener('click', (evt) => setLike(evt.target));
     cardElement.querySelector('.card__delete').addEventListener('click', (evt) => removeCards(evt.target));
 
@@ -88,7 +89,9 @@ function openPopupEdit(popup) {
 }
 
 function closePopup(evt) {
-    evt.closest('.popup').classList.remove(popupOpened);
+    if (evt.classList.contains('popup__close')) {
+        evt.closest('.popup').classList.remove(popupOpened);
+    }
 }
 
 function setLike(evt) {
@@ -104,7 +107,7 @@ function editFormSubmit(evt) {
 
     profileFio.textContent = nameInput.value;
     profileProfess.textContent = jobInput.value;
-    closePopup(evt.target);
+    closePopup(evt.target.closest('.popup').querySelector('.popup__close'));
 }
 
 function addFormSubmit(evt) {
@@ -112,12 +115,7 @@ function addFormSubmit(evt) {
 
     addCard(cards, createCard(nameInputCards.value, linkInputCards.value), 'prepend');
     evt.target.reset();
-    closePopup(evt.target);
-}
-
-function changePopupImage(evt) {
-    evt = evt.closest('.card');
-    evt.querySelector('.card__popup').classList.toggle('card__popup_active');
+    closePopup(evt.target.closest('.popup').querySelector('.popup__close'));
 }
 
 initialCards.forEach((item) => {
@@ -126,8 +124,7 @@ initialCards.forEach((item) => {
 
 profileEdit.addEventListener('click', () => openPopupEdit(popupEdit));
 profileAdd.addEventListener('click', () => openPopup(popupAdd));
+document.addEventListener('click', (evt) => closePopup(evt.target));
 
 formElementEdit.addEventListener('submit', editFormSubmit);
 formElementAdd.addEventListener('submit', addFormSubmit);
-
-btnCloses.forEach((item) => item.addEventListener('click', (evt) => closePopup(evt.target)));
