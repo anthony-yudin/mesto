@@ -24,8 +24,6 @@
 @import "../blocks/card/__title/card__title.css";
 @import "../blocks/card/__like/card__like.css";
 @import "../blocks/card/__delete/card__delete.css";
-@import "../blocks/card/__popup-img/card__popup-img.css";
-@import "../blocks/card/__popup-title/card__popup-title.css";
 
 @import "../blocks/footer/footer.css";
 
@@ -38,3 +36,5 @@
 @import "../blocks/popup/__btn/popup__btn.css";
 @import "../blocks/popup/__close/popup__close.css";
 @import "../blocks/popup/__container/_image/popup__container_image.css";
+@import "../blocks/popup/__title-image/popup__title-image.css";
+@import "../blocks/popup/__image/popup__image.css";

@@ -37,9 +37,9 @@
     </footer>
   </div>
 
-  <div class="popup" id="popup-edit-profile">
+  <div class="popup popup-edit-profile">
     <div class="popup__container">
-      <form class="popup__form" method="post" id="edit-profile">
+      <form class="popup__form edit-profile" method="post">
         <button type="button" class="popup__close"></button>
         <h3 class="popup__title">Редактировать профиль</h3>
         <input class="popup__input popup__input_value_fio" type="text" name="fio">
@@ -49,9 +49,9 @@
     </div>
   </div>
 
-  <div class="popup" id="popup-add-cards">
+  <div class="popup popup-add-cards">
     <div class="popup__container">
-      <form class="popup__form" method="post" id="add-cards">
+      <form class="popup__form add-cards" method="post">
         <button type="button" class="popup__close"></button>
         <h3 class="popup__title">Новое место</h3>
         <input class="popup__input popup__input_value_name-cards" type="text" name="name" placeholder="Название">
@@ -60,18 +60,17 @@
       </form>
     </div>
   </div>
+
+  <div class="popup popup-add-image">
+    <div class="popup__container popup__container_image">
+      <p class="popup__title-image"></p>
+      <button type="button" class="popup__close"></button>
+    </div>
+  </div>
 </div>
 
 <template id="template-card">
   <article class="card">
-    <div class="popup">
-      <div class="popup__container popup__container_image">
-        <img class="card__popup-img">
-        <p class="card__popup-title"></p>
-        <button type="button" class="popup__close"></button>
-      </div>
-    </div>
-    <img class="card__img">
     <div class="card__content">
       <h3 class="card__title"></h3>
       <button type="button" class="card__like"></button>
@@ -79,11 +78,7 @@
     <button type="button" class="card__delete"></button>
   </article>
 </template>
-<ul class="toolbar">
-  <li><button class="btn">Pencil</button></li>
-  <li><button class="btn">Pen</button></li>
-  <li><button class="btn">Eraser</button></li>
-</ul>
+
 <script src="scripts/script.js"></script>
 </body>
 </html>
