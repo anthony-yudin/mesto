@@ -34,6 +34,7 @@ const popup = page.querySelector('.popup');
 const popupEdit = page.querySelector('.popup-edit-profile');
 const popupAdd = page.querySelector('.popup-add-cards');
 
+const inputAll = Array.from(page.querySelectorAll('.popup__input'));
 const nameInput = page.querySelector('.popup__input_value_fio');
 const jobInput = page.querySelector('.popup__input_value_profess');
 
@@ -51,6 +52,8 @@ const popupAddImage = page.querySelector('.popup-add-image');
 const createImg = document.createElement('img');
 const cardsImg = document.createElement('img');
 const popupTitle = popupAddImage.querySelector('.popup__title-image');
+
+const textError = Array.from(page.querySelectorAll('.popup__text-error'));
 
 function createCard(name, link) {
     const cardElement = templateCard.cloneNode(true);
@@ -94,6 +97,15 @@ function openPopupEdit(popup) {
     nameInput.value = profileFio.textContent;
     jobInput.value = profileProfess.textContent;
 
+    textError.forEach(item => {
+        item.textContent = '';
+        item.classList.remove('popup__text-error_active');
+    });
+
+    inputAll.forEach(item => {
+        item.classList.remove('popup__input_error');
+    });
+
     openPopup(popup);
 }
 
@@ -134,9 +146,22 @@ initialCards.forEach((item) => {
     addCard(cards, createCard(item.name, item.link));
 });
 
+document.addEventListener('mousedown', (evt) => {
+    const evtTarget = evt.target;
+
+    if (evtTarget.classList.contains('popup') || evtTarget.classList.contains('popup__close')) {
+        closePopup(evtTarget.closest('.popup').querySelector('.popup__close'));
+    }
+});
+
+document.addEventListener('keydown', (evt) => {
+    if (evt.key === 'Escape') {
+        closePopup(document.querySelector('.popup_opened .popup__close'));
+    }
+});
+
 profileEdit.addEventListener('click', () => openPopupEdit(popupEdit));
 profileAdd.addEventListener('click', () => openPopup(popupAdd));
-document.addEventListener('click', (evt) => closePopup(evt.target));
 
 formElementEdit.addEventListener('submit', editFormSubmit);
 formElementAdd.addEventListener('submit', addFormSubmit);
