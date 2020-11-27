@@ -82,7 +82,6 @@ function addCard(container, cardElement, insert = 'append') {
 }
 
 function openPopup(popup) {
-    clearInputsForm(popup);
     popup.classList.add(popupOpened);
     document.addEventListener('keydown', CloseEsc);
 }
@@ -165,8 +164,15 @@ popups.forEach((item) => {
     });
 });
 
-profileEdit.addEventListener('click', () => openPopupEdit(popupEdit));
-profileAdd.addEventListener('click', () => openPopup(popupAdd));
+profileEdit.addEventListener('click', () => {
+    clearInputsForm(popupEdit);
+    openPopupEdit(popupEdit);
+});
+
+profileAdd.addEventListener('click', () => {
+    clearInputsForm(popupAdd);
+    openPopup(popupAdd);
+});
 
 formElementEdit.addEventListener('submit', editFormSubmit);
 formElementAdd.addEventListener('submit', addFormSubmit);
