@@ -6,6 +6,7 @@ class FormValidator {
     this._inactiveButtonClass = data.inactiveButtonClass;
     this._inputErrorClass = data.inputErrorClass;
     this._errorClass = data.errorClass;
+    this._textErrorSelector = data.textErrorSelector;
   }
 
   _toggleButtonState(_inputList, _buttonElement) {
@@ -46,6 +47,20 @@ class FormValidator {
 
   _setEvents() {
     this._form.addEventListener('submit', (evt) => evt.preventDefault());
+  }
+
+  clearInputsForm() {
+    const _textErrors = Array.from(this._form.querySelectorAll(this._textErrorSelector));
+    const _inputList = Array.from(this._form.querySelectorAll(this._inputSelector));
+
+    _textErrors.forEach(item => {
+      item.textContent = '';
+      item.classList.remove(this._errorClass);
+    });
+
+    _inputList.forEach(item => {
+      item.classList.remove(this._inputErrorClass);
+    });
   }
 
   enableValidation() {
