@@ -85,6 +85,7 @@ function addFormSubmit(evt) {
   cards.prepend(createCard(inputCards));
 
   evt.target.reset();
+  addCardFormValidator.addInactiveButtonClass();
   closePopup(popupAdd);
 }
 
