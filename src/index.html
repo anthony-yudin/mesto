@@ -5,19 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Антон Юдин">
   <title>Mesto</title>
-  <link rel="stylesheet" href="pages/index.css">
 </head>
 <body>
 <div class="page">
   <div class="container">
     <header class="header">
-      <img class="header__logo" src="images/logo.svg" alt="Место">
+      <img class="header__logo" src="<%=require('./images/logo.svg')%>" alt="Место">
     </header>
 
     <main class="main">
       <section class="profile">
         <div class="profile__info">
-          <img class="profile__img" src="images/avatar.jpg" alt="Ваш аватар">
+          <img class="profile__img" src="<%=require('./images/avatar.jpg')%>" alt="Ваш аватар">
           <div class="profile__content">
             <div class="profile__fio-box">
               <h1 class="profile__fio">Жак-Ив Кусто</h1>
@@ -85,6 +84,5 @@
   </article>
 </template>
 
-<script type="module" src="scripts/index.js"></script>
 </body>
 </html>

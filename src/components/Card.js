@@ -1,9 +1,9 @@
 class Card {
-  constructor(data, cardSelector, openPreviewPicture) {
+  constructor(data, cardSelector, handleCardClick) {
     this._name = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
-    this._openPreviewPicture = openPreviewPicture;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -17,7 +17,7 @@ class Card {
   }
 
   _setEvents() {
-    this._element.querySelector('.card__img').addEventListener('click',() => this._openPreviewPicture(this._name, this._link));
+    this._element.querySelector('.card__img').addEventListener('click',() => this._handleCardClick(this._name, this._link));
     this._element.querySelector('.card__like').addEventListener('click',(evt) => this._setLike(evt.target));
     this._element.querySelector('.card__delete').addEventListener('click',(evt) => this._removeCards(evt.target));
   }
