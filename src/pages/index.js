@@ -9,8 +9,6 @@ import UserInfo from '../components/UserInfo.js';
 import {
   initialCards,
   dataForm,
-  popupEdit,
-  popupAdd,
   formElementEdit,
   formElementAdd,
   profileEdit,
@@ -18,20 +16,11 @@ import {
   page,
   nameInput,
   professInput,
-  popupAddImage,
   insertInfoData,
 } from '../utils/constants.js';
 
-function handleCardClick(name, link) {
-  const openPreview = new PopupWithImage(name, link, popupAddImage);
-  openPreview.open();
-}
-
-function createCard(item) {
-  const card = new Card(item, '.template-card', handleCardClick);
-
-  return card.generateCard();
-}
+const openPreview = new PopupWithImage('.popup-add-image');
+const userInfo = new UserInfo(insertInfoData);
 
 const profileFormValidator = new FormValidator(dataForm, formElementEdit);
 profileFormValidator.enableValidation();
@@ -47,18 +36,45 @@ const addCards = new Section(
   '.cards');
 addCards.renderItems();
 
-const userInfo = new UserInfo(insertInfoData);
+const popupFormProfileEdit = new PopupWithForm({
+  popupSelector: '.popup-edit-profile',
+  submitForm: (userData) => {
+    userInfo.setUserInfo(userData);
+    popupFormProfileEdit.close();
+  }
+});
+
+const popupFormAddCard = new PopupWithForm({
+  popupSelector: '.popup-add-cards',
+  submitForm: () => {
+    const inputCards = [{
+      name: page.querySelector('.popup__input_value_name-cards').value,
+      link: page.querySelector('.popup__input_value_link-cards').value
+    }];
+
+    const addCard = new Section({
+      data: inputCards,
+      renderer: (item) => addCard.addItem(createCard(item), 'prepend')
+    }, '.cards');
+    addCard.renderItems();
+
+    popupFormAddCard.close();
+    addCardFormValidator.addInactiveButtonClass();
+  }
+});
+
+function handleCardClick(name, link) {
+  openPreview.open(name, link);
+}
+
+function createCard(item) {
+  const card = new Card(item, '.template-card', handleCardClick);
+
+  return card.generateCard();
+}
 
 profileEdit.addEventListener('click', () => {
-  const popup = new PopupWithForm({
-    selectorPopup: popupEdit,
-    submitForm: (userData) => {
-      userInfo.setUserInfo(userData);
-      popup.close();
-    }
-  });
-
-  popup.open();
+  popupFormProfileEdit.open();
 
   const userData = userInfo.getUserInfo();
   nameInput.value = userData.name;
@@ -68,25 +84,6 @@ profileEdit.addEventListener('click', () => {
 });
 
 addCard.addEventListener('click', () => {
-  const popup = new PopupWithForm({
-    selectorPopup: popupAdd,
-    submitForm: () => {
-      const inputCards = [{
-        name: page.querySelector('.popup__input_value_name-cards').value,
-        link: page.querySelector('.popup__input_value_link-cards').value
-      }];
-
-      const addCard = new Section({
-          data: inputCards,
-          renderer: (item) => addCard.addItem(createCard(item), 'prepend')
-        }, '.cards');
-      addCard.renderItems();
-
-      popup.close();
-      addCardFormValidator.addInactiveButtonClass();
-    }
-  });
-
-  popup.open();
+  popupFormAddCard.open();
   profileFormValidator.clearInputsForm();
 });

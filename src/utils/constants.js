@@ -41,9 +41,9 @@ export const popupOpened = 'popup_opened';
 
 export const profileEdit = page.querySelector('.profile__edit');
 export const addCard = page.querySelector('.profile__add');
-export const popupEdit = page.querySelector('.popup-edit-profile');
-export const popupAdd = page.querySelector('.popup-add-cards');
-export const popupAddImage = page.querySelector('.popup-add-image');
+export const popupEdit = '.popup-edit-profile';
+export const popupAdd = '.popup-add-cards';
+export const popupAddImage = '.popup-add-image';
 
 export const nameInputSelector = '.popup__input_value_fio';
 export const jobInputSelector = '.popup__input_value_profess';
