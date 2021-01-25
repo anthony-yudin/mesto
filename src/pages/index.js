@@ -29,12 +29,11 @@ const addCardFormValidator = new FormValidator(dataForm, formElementAdd);
 addCardFormValidator.enableValidation();
 
 const addCards = new Section(
-  {
-    data: initialCards,
-    renderer: (item) => addCards.addItem(createCard(item), 'append')
-  },
-  '.cards');
-addCards.renderItems();
+  {renderer: (item) => addCards.addItem(createCard(item), 'append')},
+  '.cards'
+);
+
+addCards.renderItems(initialCards);
 
 const popupFormProfileEdit = new PopupWithForm({
   popupSelector: '.popup-edit-profile',
@@ -52,12 +51,7 @@ const popupFormAddCard = new PopupWithForm({
       link: page.querySelector('.popup__input_value_link-cards').value
     }];
 
-    const addCard = new Section({
-      data: inputCards,
-      renderer: (item) => addCard.addItem(createCard(item), 'prepend')
-    }, '.cards');
-    addCard.renderItems();
-
+    addCards.addItem(createCard(inputCards), 'prepend');
     popupFormAddCard.close();
     addCardFormValidator.addInactiveButtonClass();
   }
