@@ -16,7 +16,9 @@
     <main class="main">
       <section class="profile">
         <div class="profile__info">
-          <img class="profile__img" src="<%=require('./images/avatar.jpg')%>" alt="Ваш аватар">
+          <div class="profile__img-box">
+            <img class="profile__img" src="<%=require('./images/avatar.jpg')%>" alt="Ваш аватар">
+          </div>
           <div class="profile__content">
             <div class="profile__fio-box">
               <h1 class="profile__fio">Жак-Ив Кусто</h1>
@@ -71,6 +73,29 @@
       <button type="button" class="popup__close"></button>
     </div>
   </div>
+
+  <div class="popup popup-delete-confirm">
+    <div class="popup__container">
+      <form class="popup__form" method="post">
+        <button type="button" class="popup__close"></button>
+        <h3 class="popup__title popup__title_form_confirm">Вы уверены?</h3>
+        <button type="submit" class="popup__btn">Да</button>
+        <button type="button" class="popup__close"></button>
+      </form>
+    </div>
+  </div>
+
+  <div class="popup popup-add-avatar">
+    <div class="popup__container">
+      <form class="popup__form add-avatar" method="post">
+        <button type="button" class="popup__close"></button>
+        <h3 class="popup__title">Обновить аватар</h3>
+        <input class="popup__input popup__input_value_link-avatar" type="url" name="link" placeholder="Ссылка на картинку" required>
+        <span class="popup__text-error"></span>
+        <button type="submit" class="popup__btn popup__btn_disabled">Сохранить</button>
+      </form>
+    </div>
+  </div>
 </div>
 
 <template class="template-card">
@@ -78,9 +103,11 @@
     <img class="card__img" src="#" alt="#" />
     <div class="card__content">
       <h3 class="card__title"></h3>
-      <button type="button" class="card__like"></button>
+      <div class="card__like-info">
+        <button type="button" class="card__like"></button>
+        <div class="card__like-count">0</div>
+      </div>
     </div>
-    <button type="button" class="card__delete"></button>
   </article>
 </template>
 

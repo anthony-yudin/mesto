@@ -1,30 +1,3 @@
-export const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
 export const dataForm = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
@@ -36,28 +9,24 @@ export const dataForm = {
 };
 
 export const page = document.querySelector('.page');
-export const popups = Array.from(page.querySelectorAll('.popup'));
-export const popupOpened = 'popup_opened';
 
 export const profileEdit = page.querySelector('.profile__edit');
 export const addCard = page.querySelector('.profile__add');
-export const popupEdit = '.popup-edit-profile';
-export const popupAdd = '.popup-add-cards';
-export const popupAddImage = '.popup-add-image';
-
-export const nameInputSelector = '.popup__input_value_fio';
-export const jobInputSelector = '.popup__input_value_profess';
 
 export const nameInput = page.querySelector('.popup__input_value_fio');
 export const professInput = page.querySelector('.popup__input_value_profess');
 
 export const profileFio = page.querySelector('.profile__fio');
 export const profileProfess = page.querySelector('.profile__profess');
+export const profileAvatar = page.querySelector('.profile__img-box');
+export const profileAvatarImg = page.querySelector('.profile__img');
 
 export const formElementEdit = page.querySelector('.edit-profile');
 export const formElementAdd = page.querySelector('.add-cards');
+export const formElementAddAvatar = page.querySelector('.add-avatar');
 
 export const insertInfoData = {
   name: ".profile__fio",
-  profess: ".profile__profess"
+  profess: ".profile__profess",
+  avatar: ".profile__img"
 };

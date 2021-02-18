@@ -8,6 +8,7 @@
 @import "../blocks/header/__logo/header__logo.css";
 
 @import "../blocks/profile/profile.css";
+@import "../blocks/profile/__img-box/profile__img-box.css";
 @import "../blocks/profile/__img/profile__img.css";
 @import "../blocks/profile/__fio-box/profile__fio-box.css";
 @import "../blocks/profile/__fio/profile__fio.css";
@@ -22,7 +23,9 @@
 @import "../blocks/card/__img/card__img.css";
 @import "../blocks/card/__content/card__content.css";
 @import "../blocks/card/__title/card__title.css";
+@import "../blocks/card/__like-info/card__like-info.css";
 @import "../blocks/card/__like/card__like.css";
+@import "../blocks/card/__like-count/card__like-count.css";
 @import "../blocks/card/__delete/card__delete.css";
 
 @import "../blocks/footer/footer.css";
@@ -32,6 +35,7 @@
 @import "../blocks/popup/__container/popup__container.css";
 @import "../blocks/popup/__form/popup__form.css";
 @import "../blocks/popup/__title/popup__title.css";
+@import "../blocks/popup/__title/__title_form_confirm/popup__title_form_confirm.css";
 @import "../blocks/popup/__input/popup__input.css";
 @import "../blocks/popup/__input/_error/popup__input_error.css";
 @import "../blocks/popup/__text-error/popup__text-error.css";
