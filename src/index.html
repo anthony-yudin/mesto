@@ -24,7 +24,7 @@
               <h1 class="profile__fio">Жак-Ив Кусто</h1>
               <button type="button" class="profile__edit"></button>
             </div>
-            <p class="profile__profess">Исследователь океана</p>
+            <p class="profile__about">Исследователь океана</p>
           </div>
         </div>
         <button type="button" class="profile__add"></button>
@@ -43,11 +43,23 @@
       <form class="popup__form edit-profile" method="post">
         <button type="button" class="popup__close"></button>
         <h3 class="popup__title">Редактировать профиль</h3>
-        <input class="popup__input popup__input_value_fio" type="text" name="fio" required minlength="2" maxlength="40">
+        <input class="popup__input popup__input_value_fio" type="text" name="name" required minlength="2" maxlength="40">
         <span class="popup__text-error"></span>
-        <input class="popup__input popup__input_value_profess" type="text" name="profess" required minlength="2" maxlength="200">
+        <input class="popup__input popup__input_value_profess" type="text" name="about" required minlength="2" maxlength="200">
         <span class="popup__text-error"></span>
         <button type="submit" class="popup__btn">Сохранить</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="popup popup-add-avatar">
+    <div class="popup__container">
+      <form class="popup__form add-avatar" method="post">
+        <button type="button" class="popup__close"></button>
+        <h3 class="popup__title">Обновить аватар</h3>
+        <input class="popup__input popup__input_value_link-avatar" type="url" name="avatar" placeholder="Ссылка на картинку" required>
+        <span class="popup__text-error"></span>
+        <button type="submit" class="popup__btn popup__btn_disabled">Сохранить</button>
       </form>
     </div>
   </div>
@@ -81,18 +93,6 @@
         <h3 class="popup__title popup__title_form_confirm">Вы уверены?</h3>
         <button type="submit" class="popup__btn">Да</button>
         <button type="button" class="popup__close"></button>
-      </form>
-    </div>
-  </div>
-
-  <div class="popup popup-add-avatar">
-    <div class="popup__container">
-      <form class="popup__form add-avatar" method="post">
-        <button type="button" class="popup__close"></button>
-        <h3 class="popup__title">Обновить аватар</h3>
-        <input class="popup__input popup__input_value_link-avatar" type="url" name="link" placeholder="Ссылка на картинку" required>
-        <span class="popup__text-error"></span>
-        <button type="submit" class="popup__btn popup__btn_disabled">Сохранить</button>
       </form>
     </div>
   </div>

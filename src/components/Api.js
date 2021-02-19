@@ -37,8 +37,8 @@ class Api {
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
-        name: data.fio,
-        about: data.profess
+        name: data.name,
+        about: data.about
       })
     })
       .then(res => this._checkPromise(res))
@@ -86,7 +86,7 @@ class Api {
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
-        avatar: data.link
+        avatar: data.avatar
       })
     })
       .then(res => this._checkPromise(res))

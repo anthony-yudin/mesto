@@ -17,10 +17,7 @@ import {
   nameInput,
   professInput,
   insertInfoData,
-  profileFio,
-  profileProfess,
   profileAvatar,
-  profileAvatarImg,
   formElementAddAvatar
 } from '../utils/constants.js';
 
@@ -34,22 +31,20 @@ const api = new Api({
   }
 });
 
+const userInfo = new UserInfo(insertInfoData);
+
 api.initialPage()
-  .then((data) => {
+  .then(data => {
     const [getUser, initialCards] = data;
-    profileFio.textContent = getUser.name;
-    profileProfess.textContent = getUser.about;
-    profileAvatarImg.src = getUser.avatar;
-    idUser = getUser._id;
+
+    userInfo.setUserInfo(getUser);
+    idUser = userInfo.getUserId(getUser);
 
     addCards.renderItems(initialCards);
   })
-  .catch((err) => {
-    console.log(err);
-  });
+  .catch(err => console.log(err));
 
 const openPreview = new PopupWithImage('.popup-add-image');
-const userInfo = new UserInfo(insertInfoData);
 
 const profileFormValidator = new FormValidator(dataForm, formElementEdit);
 profileFormValidator.enableValidation();
@@ -64,14 +59,14 @@ function createCard(data) {
   const card = new Card(data, '.template-card', idUser, {
     handleSetLikeBtn: () => {
       api.setLike(data._id)
-        .then((res) => card.setLike(res))
-        .catch((err) => {console.log(err);});
+        .then(res => card.setLike(res))
+        .catch(err => console.log(err));
     },
 
     handleRemoveLikeBtn: () => {
       api.removeLike(data._id)
         .then((res) => card.setLike(res))
-        .catch((err) => {console.log(err);});
+        .catch(err => console.log(err));
     },
 
     handleCardClick: (name, link) => openPreview.open(name, link),
@@ -79,6 +74,12 @@ function createCard(data) {
   });
 
   return card;
+}
+
+function updateProfilePopup(data, popup) {
+  userInfo.setUserInfo(data);
+  popup.close();
+  popup.loading();
 }
 
 const addCards = new Section(
@@ -96,12 +97,18 @@ const popupFormProfileEdit = new PopupWithForm({
   submitForm: (userData) => {
     popupFormProfileEdit.loading();
     api.updateProfile(userData)
-      .then(() => {
-        userInfo.setUserInfo(userData);
-        popupFormProfileEdit.close();
-        popupFormProfileEdit.loading();
-      })
-      .catch((err) => {console.log(err);});
+      .then(() => updateProfilePopup(userData, popupFormProfileEdit))
+      .catch(err => console.log(err));
+  }
+});
+
+const popupFormAddAvatar = new PopupWithForm({
+  popupSelector: '.popup-add-avatar',
+  submitForm: (userData) => {
+    popupFormAddAvatar.loading();
+    api.updateAvatar(userData)
+      .then(() => updateProfilePopup(userData, popupFormAddAvatar))
+      .catch(err => console.log(err));
   }
 });
 
@@ -128,7 +135,7 @@ const popupFormAddCard = new PopupWithForm({
         popupFormAddCard.loading();
         addCardFormValidator.addInactiveButtonClass();
       })
-      .catch((err) => {console.log(err);});
+      .catch(err => console.log(err));
   }
 });
 
@@ -137,21 +144,7 @@ const popupWithSubmit = new PopupWithSubmit({
   submitForm: (id) => {
     api.deleteCard(id)
       .then(() => popupWithSubmit.close())
-      .catch((err) => {console.log(err);});
-  }
-});
-
-const popupFormAddAvatar = new PopupWithForm({
-  popupSelector: '.popup-add-avatar',
-  submitForm: (userData) => {
-    popupFormAddAvatar.loading();
-    api.updateAvatar(userData)
-      .then(() => {
-        userInfo.setUserInfoAvatar(userData.link);
-        popupFormAddAvatar.close();
-        popupFormAddAvatar.loading();
-      })
-      .catch((err) => {console.log(err);});
+      .catch(err => console.log(err));
   }
 });
 
@@ -160,7 +153,7 @@ profileEdit.addEventListener('click', () => {
 
   const userData = userInfo.getUserInfo();
   nameInput.value = userData.name;
-  professInput.value = userData.profess;
+  professInput.value = userData.about;
 
   profileFormValidator.clearInputsForm();
 });
